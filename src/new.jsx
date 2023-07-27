@@ -21,18 +21,22 @@ const New = () => {
   };
 
   const save = () => {
-    setName(connectionName);
-    setStops(stopList);
-    alert("Saved!");
-    navigate("/");
+    if (connectionName && connectionName.length > 0 && stopList.length > 0) {
+      setName(connectionName);
+      setStops(stopList);
+      alert("Saved!");
+      navigate("/");
+    } else alert("Enter name and 1 stop!");
   };
 
   return (
     <div className="container">
       <h1>New Connection</h1>
-      Name: <input onChange={(e) => setConnectionName(e.target.value)} />
+      Name:{" "}
+      <input required onChange={(e) => setConnectionName(e.target.value)} />
       <br />
       <select
+        required
         name="stops"
         id="stops"
         onChange={(e) => addToList(0, e.target.value)}

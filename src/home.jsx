@@ -17,6 +17,14 @@ const Home = () => {
     navigate(`/connection?id=${connect}`);
   };
 
+  const deletion = () => {
+    const text = "Are you sure?";
+    if (window.confirm(text) === true) {
+      localStorage.removeItem("connections");
+      window.location.reload(true);
+    }
+  };
+
   return (
     <div className="container">
       <h1>My Connections</h1>
@@ -41,6 +49,8 @@ const Home = () => {
       ) : (
         <button onClick={newConnection}>Add New</button>
       )}
+      <br />
+      <button onClick={deletion}>Delete All</button>
     </div>
   );
 };
