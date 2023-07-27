@@ -1,25 +1,11 @@
 import { useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
 import DataSet from "../utils/example-data";
 import { ptvClient } from "../utils/api.utils";
-
-import train from "../images/train.svg";
-import tram from "../images/tram.svg";
-import bus from "../images/bus.svg";
 
 const Connection = (props) => {
   const stop = props.data.stop;
   const stopName = props.data.stopName;
-  const navigate = useNavigate();
-  const [queryParameters] = useSearchParams();
   const [departureTimes, setDepartureTimes] = useState();
-  const connections = JSON.parse(localStorage.getItem("connections"));
-
-  const home = () => {
-    navigate("/");
-  };
-
-  const connect = queryParameters.get("id");
 
   const departures = (stop, mode) => {
     let routeNo = 0;
