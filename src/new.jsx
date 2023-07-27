@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import DataSet from "./utils/example-data";
 import { StopsContext } from "./context/stops.context";
 
+import "./App.scss";
+
 const New = () => {
   const navigate = useNavigate();
   const { name, setName, stops, setStops } = useContext(StopsContext);
@@ -26,7 +28,7 @@ const New = () => {
   };
 
   return (
-    <>
+    <div className="container">
       <h1>New Connection</h1>
       Name: <input onChange={(e) => setConnectionName(e.target.value)} />
       <br />
@@ -69,11 +71,11 @@ const New = () => {
         ))}
       </select>
       <br />
-      <button onClick={home}>Cancel</button>
       <button type="submit" onClick={save}>
         Save
       </button>
-    </>
+      <button onClick={home}>Cancel</button>
+    </div>
   );
 };
 

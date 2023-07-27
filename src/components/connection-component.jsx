@@ -2,6 +2,8 @@ import { useState } from "react";
 import DataSet from "../utils/example-data";
 import { ptvClient } from "../utils/api.utils";
 
+import "../App.scss";
+
 const Connection = (props) => {
   const stop = props.data.stop;
   const stopName = props.data.stopName;
@@ -49,14 +51,14 @@ const Connection = (props) => {
   };
 
   return (
-    <>
+    <div className="departures">
       {<p>{departures(stop, stopName.mode)}</p>}
       {departureTimes &&
         departureTimes.length > 0 &&
         departureTimes.slice(0, 3).map((depart) => {
-          return <p key={depart}>{depart.split(",")[1]}</p>;
+          return <p key={depart}>{depart.split(",")[1].slice(0, -3)}</p>;
         })}
-    </>
+    </div>
   );
 };
 

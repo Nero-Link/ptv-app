@@ -6,6 +6,8 @@ import tram from "./images/tram.svg";
 import bus from "./images/bus.svg";
 import Connection from "./components/connection-component";
 
+import "./App.scss";
+
 const Connections = () => {
   const navigate = useNavigate();
   const [queryParameters] = useSearchParams();
@@ -18,38 +20,42 @@ const Connections = () => {
   const connect = queryParameters.get("id");
 
   return (
-    <>
+    <div className="container">
       <h1>{connect}</h1>
-      {connections.map((connection) => {
-        if (connect === connection.name)
-          return connection.stops.map((stop) => {
-            return DataSet.stops.map((stopName) => {
-              if (stopName.id === stop)
-                return (
-                  <>
-                    <img
-                      src={
-                        stopName.mode === "train"
-                          ? train
-                          : stopName.mode === "tram"
-                          ? tram
-                          : stopName.mode === "bus"
-                          ? bus
-                          : null
-                      }
-                      alt="PTV"
-                      height="50px"
-                    />
-                    <p key={stop}>{stopName.title}</p>
-                    <Connection data={{ stop, stopName }} />
-                  </>
-                );
+      <div>
+        {connections.map((connection) => {
+          if (connect === connection.name)
+            return connection.stops.map((stop) => {
+              return DataSet.stops.map((stopName) => {
+                if (stopName.id === stop)
+                  return (
+                    <div className="connection-container">
+                      <div className="connection-header">
+                        <img
+                          src={
+                            stopName.mode === "train"
+                              ? train
+                              : stopName.mode === "tram"
+                              ? tram
+                              : stopName.mode === "bus"
+                              ? bus
+                              : null
+                          }
+                          alt="PTV"
+                          height="50px"
+                        />
+                        <h4 key={stop}>{stopName.title}</h4>
+                      </div>
+                      <Connection data={{ stop, stopName }} />
+                    </div>
+                  );
+              });
             });
-          });
-      })}
+        })}
+      </div>
       <br />
       <button onClick={home}>Home</button>
-    </>
+    </div>
   );
 };
 
