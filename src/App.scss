@@ -41,8 +41,14 @@ input {
   min-height: 80vh;
   max-width: 400px;
   width: 80vw;
-  background: lightsteelblue;
-  border: 1px solid darkgrey;
+  background: rgb(176, 196, 222);
+  background: linear-gradient(
+    90deg,
+    rgba(176, 196, 222, 1) 0%,
+    rgba(206, 220, 239, 1) 50%,
+    rgba(176, 196, 222, 1) 100%
+  );
+  border: 3px double grey;
   box-shadow: 3px 3px 10px grey;
   padding: 25px;
   border-radius: 15px;
